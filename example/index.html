@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../dist/wcag-theme-generator.min.js"></script>
+</head>
+<body>
+    <input id="color-code" onkeyup="(e) => handleChange(e)"/>
+    <div id="color-palette" style="display: flex"></div>
+
+    <script type="text/javascript">
+
+        const grid = document.getElementById('color-palette');
+        const input = document.getElementById('color-code');
+
+        const handleChange = (e) => {
+            console.log(e)
+            const { value } = e.target;
+
+            
+            
+            while (grid.firstChild) {
+                grid.firstChild.remove()
+            }
+
+            if(e.key !== 'Enter') return;
+
+            const colors = wcag.generatePalette(value);
+
+            for(const c in colors) {
+                const col = document.createElement('div');
+                col.style.height = '50px';
+                col.style.width = '50px'
+                col.style.backgroundColor = c;
+
+                grid.appendChild(col);
+            }
+        }
+
+        input.addEventListener('keyup', (e) => handleChange(e));
+    </script>
+</body>
+</html>
