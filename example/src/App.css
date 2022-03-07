@@ -1,0 +1,13 @@
+.block {
+	height: 20px;
+	width: 20px;
+}
+
+.col {
+	display: flex;
+	flex-direction: column;
+}
+
+.row {
+	display: flex;
+}

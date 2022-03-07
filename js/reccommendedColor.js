@@ -18,15 +18,15 @@ function getReccommended(color, ratio, color2) {
     }
 
     if(tinycolor(color).isLight()) {
-        if(tinycolor.readability(color, '#ffffff') < ratio) {
-            return recommendedColors(color, '#ffffff', ratio);
+        if(tinycolor.readability(color, '#000000') < ratio) {
+            return recommendedColors(color, '#000000', ratio);
         }
         return tinycolor(color).toHexString();
     }
 
     if(tinycolor(color).isDark()) {
-        if(tinycolor.readability(color, '#000000') < ratio) {
-            return recommendedColors(color, '#000000', ratio);
+        if(tinycolor.readability(color, '#ffffff') < ratio) {
+            return recommendedColors(color, '#ffffff', ratio);
         }
         return tinycolor(color).toHexString();
     }
@@ -118,4 +118,7 @@ function recommendedColors(background, foreground, target) {
     return reccomended;
 }
 
-module.exports = getReccommended;
+module.exports = {
+    getReccommended,
+    recommendedColors
+}
